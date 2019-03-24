@@ -6,12 +6,15 @@ import {
   Headers,
   Get,
   ForbiddenException,
+  Request,
 } from '@nestjs/common';
 import { LoginDto, RegisterDto } from './auth.dto';
 import { UserService } from 'src/user/user.service';
 import { AppException, AppExceptionMap } from 'src/app.exption';
 import { AuthService } from './auth.service';
 import * as bcrypt from 'bcrypt';
+import { Auth, AuthUser } from 'src/app.decorator';
+import { User } from 'src/user/user.entity';
 @Controller('auth')
 export class AuthController {
   constructor(
@@ -19,13 +22,9 @@ export class AuthController {
     private readonly authService: AuthService,
   ) {}
   @Get()
-  async me(@Headers('authorization') token: string) {
-    if (token) {
-      const body = this.authService.verifyJwt(token);
-      return this.userService.getOneUser(body.username);
-    } else {
-      throw new ForbiddenException();
-    }
+  @Auth()
+  async me(@AuthUser() user:User) {
+    return user;
   }
   @Post()
   async login(@Body() body: LoginDto) {
