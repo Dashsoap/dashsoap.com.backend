@@ -3,7 +3,8 @@ import { readFileSync } from 'fs';
 import { User } from 'src/user/user.entity';
 import * as jwt from 'jsonwebtoken';
 export interface JwtPayload{
-    id:number
+    id:number,
+    username:string
 }
 
 @Injectable()
@@ -16,6 +17,7 @@ export class AuthService {
     sighJwt(user:User){
         return jwt.sign({
             id:user.id,
+            username:user.username
         },this.jwtKey,{
             expiresIn:3600*24*30,
         })
