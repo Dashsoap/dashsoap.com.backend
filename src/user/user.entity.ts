@@ -19,4 +19,17 @@ export class User extends BaseEntity{
         default:"PUBLIC"
     })
     role:"VIP"|"ADMIN"|"PUBLIC"
+    @Column({
+        length:20,
+        default:""
+    })
+    nickname:string;
+    @Column({
+        length:16,
+    })
+    phoneNumber:number;
+    @Column({
+        enum:['0',1],
+    })
+    gender:"1"|"0";
 }
