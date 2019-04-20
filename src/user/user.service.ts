@@ -1,21 +1,21 @@
 import { Injectable } from '@nestjs/common';
-import { User } from './user.entity';
+import { UserEntity } from './user.entity';
 import { createUserVo } from './user.vo';
 
 @Injectable()
 export class UserService {
   async getAllUser() {
-    return await User.find();
+    return await UserEntity.find();
   }
   async getOneUser(username: string) {
-    return User.findOne({
+    return UserEntity.findOne({
       where: {
         username,
       },
     });
   }
   createUser(vo: createUserVo) {
-    const user = new User();
+    const user = new UserEntity();
     user.username = vo.username;
     user.password = vo.password;
     return user.save();
