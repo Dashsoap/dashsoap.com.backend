@@ -14,7 +14,7 @@ import { AppException, AppExceptionMap } from 'src/app.exption';
 import { AuthService } from './auth.service';
 import * as bcrypt from 'bcrypt';
 import { Auth, AuthUser } from 'src/app.decorator';
-import { User } from 'src/user/user.entity';
+import { UserEntity } from 'src/user/user.entity';
 @Controller('auth')
 export class AuthController {
   constructor(
@@ -23,7 +23,7 @@ export class AuthController {
   ) {}
   @Get()
   @Auth()
-  async me(@AuthUser() user:User) {
+  async me(@AuthUser() user:UserEntity) {
     return user;
   }
   @Post()

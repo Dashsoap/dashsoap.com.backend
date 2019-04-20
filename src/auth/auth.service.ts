@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { readFileSync } from 'fs';
-import { User } from 'src/user/user.entity';
+import { UserEntity } from 'src/user/user.entity';
 import * as jwt from 'jsonwebtoken';
 export interface JwtPayload{
     id:number,
@@ -14,7 +14,7 @@ export class AuthService {
         this.jwtKey = readFileSync('jwt.key').toString();
         console.log(this.jwtKey);
     }
-    sighJwt(user:User){
+    sighJwt(user:UserEntity){
         return jwt.sign({
             id:user.id,
             username:user.username
