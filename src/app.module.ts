@@ -7,8 +7,9 @@ import { UserModule } from './user/user.module';
 import { AppGuard } from './app.guard';
 import { APP_GUARD } from '@nestjs/core';
 import { AppMiddleware } from './app.middleware';
+import { AddressModule } from './address/address.module';
 @Module({
-  imports: [TypeOrmModule.forRoot(), AuthModule, UserModule],
+  imports: [TypeOrmModule.forRoot(), AuthModule, UserModule, AddressModule],
   controllers: [AppController],
   providers: [{ provide: APP_GUARD, useClass: AppGuard }, AppService],
 })

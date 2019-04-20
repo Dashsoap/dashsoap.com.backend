@@ -1,5 +1,4 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
-import { resolveSoa } from "dns";
 
 @Entity()
 export class User extends BaseEntity{
@@ -10,26 +9,33 @@ export class User extends BaseEntity{
         unique:true,
     })
     username:string;
+
     @Column({
         length: 256,
     })
     password:string;
+
     @Column({
         enum:["VIP","ADMIN","PUBLIC"],
         default:"PUBLIC"
     })
     role:"VIP"|"ADMIN"|"PUBLIC"
+
     @Column({
         length:20,
         default:""
     })
     nickname:string;
+
     @Column({
         length:16,
+        default:""
     })
-    phoneNumber:number;
+    phoneNumber:string;
+
     @Column({
-        enum:['0',1],
+        enum:['0','1'],
+        default:'0'
     })
     gender:"1"|"0";
 }
