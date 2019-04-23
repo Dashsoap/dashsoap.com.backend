@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from "typeorm";
+import { AddressEntity } from "src/address/address.entity";
 
 @Entity()
 export class UserEntity extends BaseEntity{
@@ -38,4 +39,7 @@ export class UserEntity extends BaseEntity{
         default:'0'
     })
     gender:"1"|"0";
+
+    @OneToMany(type=>AddressEntity,address=>address.user)
+    address:AddressEntity[]
 }

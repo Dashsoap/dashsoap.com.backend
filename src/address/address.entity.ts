@@ -1,7 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne } from "typeorm";
+import { UserEntity } from "src/user/user.entity";
 // import { UserEntity } from "src/user/user.entity";
 @Entity()
-export class AddresEntity extends BaseEntity {
+export class AddressEntity extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -45,4 +46,6 @@ export class AddresEntity extends BaseEntity {
     })
     isDefault:boolean;
     
+    @ManyToOne(type=>UserEntity,user=>user.address)
+    user:UserEntity
 }
