@@ -16,11 +16,12 @@ export class AppGuard implements CanActivate {
     private readonly userService: UserService,
     private readonly authService: AuthService,
     private readonly meta: Reflector,
-  ) {}
+  ) { }
 
   async canActivate(context: ExecutionContext) {
     const req = context.switchToHttp().getRequest();
     const user = req.user;
+    /** 检查是否被 `@Auth` 装饰器标记 */
     const roles = this.meta.get('auth', context.getHandler());
     if (roles instanceof Array) {
       return !!user && (!roles.length || roles.includes(user.role));
