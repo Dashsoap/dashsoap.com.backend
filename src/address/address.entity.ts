@@ -1,51 +1,52 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne } from "typeorm";
 import { UserEntity } from "src/user/user.entity";
+import { AppEntity } from "src/app.entity";
 // import { UserEntity } from "src/user/user.entity";
-@Entity()
-export class AddressEntity extends BaseEntity {
-    @PrimaryGeneratedColumn()
-    id: number;
+@Entity(
+    { name: "Address", }
+)
+export class AddressEntity extends AppEntity {
 
     @Column({
         length: 20,
-        unique:true,
+        unique: true,
     })
-    addressname:string;
+    addressname: string;
 
     @Column({
     })
-    phone:number;
-
-    @Column({
-        length: 20,
-    })
-    province:string;
+    phone: number;
 
     @Column({
         length: 20,
     })
-    city:string;
+    province: string;
 
     @Column({
         length: 20,
     })
-    area:string;
+    city: string;
 
     @Column({
         length: 20,
     })
-    street:string;
+    area: string;
+
+    @Column({
+        length: 20,
+    })
+    street: string;
 
     @Column({
         length: 80,
     })
-    detail:string;
-    
+    detail: string;
+
     @Column({
-         default:false
+        default: false
     })
-    isDefault:boolean;
-    
-    @ManyToOne(type=>UserEntity,user=>user.address)
-    user:UserEntity
+    isDefault: boolean;
+
+    @ManyToOne(type => UserEntity, user => user.address)
+    user: UserEntity
 }

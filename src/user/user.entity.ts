@@ -1,45 +1,47 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from "typeorm";
 import { AddressEntity } from "src/address/address.entity";
+import { AppEntity } from "src/app.entity";
 
-@Entity()
-export class UserEntity extends BaseEntity{
-    @PrimaryGeneratedColumn()
-    id:number;
+@Entity({
+    name: "User"
+})
+export class UserEntity extends AppEntity {
+
     @Column({
         length: 20,
-        unique:true,
+        unique: true,
     })
-    username:string;
+    username: string;
 
     @Column({
         length: 256,
     })
-    password:string;
+    password: string;
 
     @Column({
-        enum:["VIP","ADMIN","PUBLIC"],
-        default:"PUBLIC"
+        enum: ["VIP", "ADMIN", "PUBLIC"],
+        default: "PUBLIC"
     })
-    role:"VIP"|"ADMIN"|"PUBLIC"
+    role: "VIP" | "ADMIN" | "PUBLIC"
 
     @Column({
-        length:20,
-        default:""
+        length: 20,
+        default: ""
     })
-    nickname:string;
+    nickname: string;
 
     @Column({
-        length:16,
-        default:""
+        length: 16,
+        default: ""
     })
-    phoneNumber:string;
+    phoneNumber: string;
 
     @Column({
-        enum:['0','1'],
-        default:'0'
+        enum: ['0', '1'],
+        default: '0'
     })
-    gender:"1"|"0";
+    gender: "1" | "0";
 
-    @OneToMany(type=>AddressEntity,address=>address.user)
-    address:AddressEntity[]
+    @OneToMany(type => AddressEntity, address => address.user)
+    address: AddressEntity[]
 }
