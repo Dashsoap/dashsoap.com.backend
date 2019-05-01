@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { UserEntity } from './user.entity';
 import { createUserVo } from './user.vo';
+import { DeepPartial } from 'typeorm';
 
 @Injectable()
 export class UserService {
@@ -20,4 +21,8 @@ export class UserService {
     user.password = vo.password;
     return user.save();
   }
+  updateUser(id: number, vo: DeepPartial<UserEntity>) {
+    return UserEntity.update(id, vo);
+  }
+
 }

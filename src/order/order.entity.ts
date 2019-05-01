@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne } from "typeorm";
+import { Entity, Column } from "typeorm";
 import { AppEntity } from "src/app.entity";
 
 @Entity({ name: "Order" })

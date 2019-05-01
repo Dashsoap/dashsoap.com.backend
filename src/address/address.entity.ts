@@ -47,6 +47,6 @@ export class AddressEntity extends AppEntity {
     })
     isDefault: boolean;
 
-    @ManyToOne(type => UserEntity, user => user.address)
+    @ManyToOne(type => UserEntity, user => user.addresses)
     user: UserEntity
 }

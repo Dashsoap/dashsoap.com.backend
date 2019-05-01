@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from "typeorm";
 import { AddressEntity } from "src/address/address.entity";
 import { AppEntity } from "src/app.entity";
+import { type } from "os";
 
 @Entity({
     name: "User"
@@ -42,6 +43,11 @@ export class UserEntity extends AppEntity {
     })
     gender: "1" | "0";
 
-    @OneToMany(type => AddressEntity, address => address.user)
-    address: AddressEntity[]
+    @OneToMany(type => AddressEntity, addresses => addresses.user)
+    addresses: AddressEntity[]
+
+    // @Column(
+    //     "VIPleft"
+    // )
+    // VIPleft: Date
 }
