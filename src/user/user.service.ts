@@ -21,7 +21,8 @@ export class UserService {
     user.password = vo.password;
     return user.save();
   }
-  updateUser(id: number, vo: DeepPartial<UserEntity>) {
+  updateUser(id: number, vo) {
+    console.log(vo);
     return UserEntity.update(id, vo);
   }
 
