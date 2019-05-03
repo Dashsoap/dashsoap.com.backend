@@ -8,16 +8,17 @@ import { AppGuard } from './app.guard';
 import { APP_GUARD } from '@nestjs/core';
 import { AppMiddleware } from './app.middleware';
 import { AddressModule } from './address/address.module';
-import { BackryModule } from './backry/backry.module';
-import { BackrygroupModule } from './backrygroup/backrygroup.module';
 import { CommentService } from './comment/comment.service';
 import { CommentModule } from './comment/comment.module';
 import { CartController } from './cart/cart.controller';
 import { CartModule } from './cart/cart.module';
+import { BakerytypeService } from './bakerytype/bakerytype.service';
+import { BakerytypeModule } from './bakerytype/bakerytype.module';
+import { BakerygroupModule } from './bakerygroup/bakerygroup.module';
 @Module({
-  imports: [TypeOrmModule.forRoot(), AuthModule, UserModule, AddressModule, BackryModule, BackrygroupModule, CommentModule, CartModule],
+  imports: [TypeOrmModule.forRoot(), AuthModule, UserModule, AddressModule, CommentModule, CartModule, BakerytypeModule, BakerygroupModule],
   controllers: [AppController, CartController],
-  providers: [{ provide: APP_GUARD, useClass: AppGuard }, AppService, CommentService],
+  providers: [{ provide: APP_GUARD, useClass: AppGuard }, AppService, CommentService, BakerytypeService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
