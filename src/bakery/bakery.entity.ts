@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from "t
 import { AppEntity } from "src/app.entity";
 
 @Entity({
-    name: "bakery",
+    name: "Bakery",
 })
 export class BakeryEntity extends AppEntity {
 
