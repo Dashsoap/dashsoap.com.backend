@@ -15,8 +15,9 @@ import { CartModule } from './cart/cart.module';
 import { BakerytypeService } from './bakerytype/bakerytype.service';
 import { BakerytypeModule } from './bakerytype/bakerytype.module';
 import { BakerygroupModule } from './bakerygroup/bakerygroup.module';
+import { BakeryModule } from './bakery/bakery.module';
 @Module({
-  imports: [TypeOrmModule.forRoot(), AuthModule, UserModule, AddressModule, CommentModule, CartModule, BakerytypeModule, BakerygroupModule],
+  imports: [TypeOrmModule.forRoot(), AuthModule, UserModule, AddressModule, CommentModule, CartModule, BakerytypeModule, BakerygroupModule, BakeryModule],
   controllers: [AppController, CartController],
   providers: [{ provide: APP_GUARD, useClass: AppGuard }, AppService, CommentService, BakerytypeService],
 })
