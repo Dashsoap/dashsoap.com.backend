@@ -1,5 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany, ManyToOne } from "typeorm";
 import { AppEntity } from "src/app.entity";
+import { type } from "os";
+import { BakeryTypeEntity } from "src/bakerytype/bakerytype.entity";
 
 @Entity({
     name: "Bakery",
@@ -40,4 +42,7 @@ export class BakeryEntity extends AppEntity {
 
     @Column()
     priceVip: number;
+
+    @ManyToOne(type => BakeryTypeEntity, bakerytype => bakerytype.bakery)
+    type: BakeryTypeEntity
 }

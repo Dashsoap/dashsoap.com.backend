@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne, OneToMany } from "typeorm";
 import { UserEntity } from "src/user/user.entity";
 import { AppEntity } from "src/app.entity";
+import { OrderEntity } from "src/order/order.entity";
 // import { UserEntity } from "src/user/user.entity";
 @Entity(
     { name: "Address", }
@@ -49,4 +50,7 @@ export class AddressEntity extends AppEntity {
 
     @ManyToOne(type => UserEntity, user => user.addresses)
     user: UserEntity
+
+    @OneToMany(type => OrderEntity, order => order.address)
+    order: OrderEntity[]
 }
