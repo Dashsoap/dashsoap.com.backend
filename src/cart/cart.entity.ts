@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany, OneToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany, OneToOne, JoinTable, ManyToMany } from "typeorm";
 import { AppEntity } from "src/app.entity";
 import { UserEntity } from "src/user/user.entity";
 import { BakeryEntity } from "src/bakery/bakery.entity";
@@ -13,7 +13,7 @@ export class CartEntity extends AppEntity {
     @OneToOne(type => UserEntity, user => user.cart)
     user: UserEntity
 
-    @OneToMany(type => BakeryEntity, BakeryEntity => BakeryEntity)
-    bakery: BakeryEntity
+    @ManyToMany(type => BakeryEntity, bakery => bakery.cart)
+    bakery: BakeryEntity[]
 
 }

@@ -1,7 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany, ManyToOne, JoinTable, JoinColumn, ManyToMany } from "typeorm";
 import { AppEntity } from "src/app.entity";
 import { type } from "os";
 import { BakeryTypeEntity } from "src/bakerytype/bakerytype.entity";
+import { CartEntity } from "src/cart/cart.entity";
+import { OrderEntity } from "src/order/order.entity";
 
 @Entity({
     name: "Bakery",
@@ -62,4 +64,12 @@ export class BakeryEntity extends AppEntity {
 
     @ManyToOne(type => BakeryTypeEntity, bakerytype => bakerytype.bakery)
     type: BakeryTypeEntity
+
+    @ManyToMany(type => CartEntity, cart => cart.bakery)
+    @JoinTable()
+    cart: CartEntity
+
+    @ManyToOne(type => OrderEntity, order => order.bakery)
+    @JoinTable()
+    order: OrderEntity[]
 }

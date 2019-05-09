@@ -22,7 +22,7 @@ export class AuthController {
     private readonly authService: AuthService,
   ) { }
   @Get()
-  // @Auth()
+  @Auth()
   async me(@AuthUser() user: UserEntity) {
     return user;
   }

@@ -1,10 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany, OneToOne, JoinColumn } from "typeorm";
+import { Entity, Column, OneToMany, OneToOne, JoinColumn } from "typeorm";
 import { AddressEntity } from "src/address/address.entity";
 import { AppEntity } from "src/app.entity";
 import { CommentEntity } from "src/comment/comment.entity";
 import { CartEntity } from "src/cart/cart.entity";
 import { OrderEntity } from "src/order/order.entity";
-import { BakeryEntity } from "src/bakery/bakery.entity";
 
 @Entity({
     name: "User"
@@ -63,7 +62,7 @@ export class UserEntity extends AppEntity {
 
     /* 用户多个订单 */
     @OneToMany(type => OrderEntity, order => order.user)
-    order: OrderEntity[]
+    order: OrderEntity
 
     /* 用户的喜欢 */
     // @OneToMany(type => BakeryEntity, bakery => bakery)
