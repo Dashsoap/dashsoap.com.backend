@@ -20,12 +20,13 @@ export class AuthController {
   constructor(
     private readonly userService: UserService,
     private readonly authService: AuthService,
-  ) {}
+  ) { }
   @Get()
-  @Auth()
-  async me(@AuthUser() user:UserEntity) {
+  // @Auth()
+  async me(@AuthUser() user: UserEntity) {
     return user;
   }
+
   @Post()
   async login(@Body() body: LoginDto) {
     const user = await this.userService.getOneUser(body.username);

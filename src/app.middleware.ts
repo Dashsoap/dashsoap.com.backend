@@ -12,7 +12,7 @@ export class AppMiddleware implements NestMiddleware {
   constructor(
     private readonly userService: UserService,
     private readonly authService: AuthService,
-  ) {}
+  ) { }
   async use(req: any, res: any, next: () => void) {
     const token = req.headers.authorization;
     if (token) {
@@ -20,12 +20,14 @@ export class AppMiddleware implements NestMiddleware {
       try {
         payload = this.authService.verifyJwt(token);
       } catch (error) {
-        throw new UnauthorizedException();
+        // throw new UnauthorizedException();
+        next()
+        return
       }
       const user = await this.userService.getOneUser(payload.username);
       req.user = user
     }
-      
+
     next();
   }
 }
