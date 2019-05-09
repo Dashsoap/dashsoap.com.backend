@@ -1,7 +1,10 @@
 import { Module } from '@nestjs/common';
 import { BakeryService } from './bakery.service';
+import { BakeryController } from './bakery.controller';
 
 @Module({
-  providers: [BakeryService]
+  controllers: [BakeryController],
+  providers: [BakeryService],
+  exports: [BakeryService]
 })
-export class BakeryModule {}
+export class BakeryModule { }

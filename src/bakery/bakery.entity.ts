@@ -13,7 +13,8 @@ export class BakeryEntity extends AppEntity {
     name: string;
 
     @Column({
-        length: 20,
+        length: 2000,
+        default: 'Wow delicious!'
     })
     discreption: string;
 
@@ -42,6 +43,22 @@ export class BakeryEntity extends AppEntity {
 
     @Column()
     priceVip: number;
+
+    @Column({
+        default: ''
+    })
+    picture: string;
+
+    @Column({
+        default: ''
+
+    })
+    detailpic1: string;
+
+    @Column({
+        default: ''
+    })
+    detailpic2: string;
 
     @ManyToOne(type => BakeryTypeEntity, bakerytype => bakerytype.bakery)
     type: BakeryTypeEntity
