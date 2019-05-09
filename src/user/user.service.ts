@@ -32,4 +32,12 @@ export class UserService {
     return UserEntity.update(id, vo);
   }
 
+  getUserProfile(id) {
+    return UserEntity.findOne({
+      where: {
+        id
+      }
+    })
+  }
+
 }
