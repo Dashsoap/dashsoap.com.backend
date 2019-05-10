@@ -24,7 +24,13 @@ export class AuthController {
   @Get()
   @Auth()
   async me(@AuthUser() user: UserEntity) {
-    return user;
+    const cart = await UserEntity.find({
+      where: {
+        id: user.id
+      },
+      relations: ['cart']
+    })
+    return cart[0];
   }
 
   @Post()

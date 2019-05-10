@@ -65,9 +65,9 @@ export class BakeryEntity extends AppEntity {
     @ManyToOne(type => BakeryTypeEntity, bakerytype => bakerytype.bakery)
     type: BakeryTypeEntity
 
-    @ManyToMany(type => CartEntity, cart => cart.bakery)
-    @JoinTable()
-    cart: CartEntity
+    // @ManyToMany(type => CartEntity, cart => cart.bakery)
+    // @JoinTable()
+    // cart: CartEntity
 
     @ManyToOne(type => OrderEntity, order => order.bakery)
     @JoinTable()

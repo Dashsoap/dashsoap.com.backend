@@ -10,7 +10,7 @@ import { AppMiddleware } from './app.middleware';
 import { AddressModule } from './address/address.module';
 import { CommentService } from './comment/comment.service';
 import { CommentModule } from './comment/comment.module';
-import { CartController } from './cart/cart.controller';
+// import { CartController } from './cart/cart.controller';
 import { CartModule } from './cart/cart.module';
 import { BakerytypeService } from './bakerytype/bakerytype.service';
 import { BakerytypeModule } from './bakerytype/bakerytype.module';
@@ -18,7 +18,7 @@ import { BakeryModule } from './bakery/bakery.module';
 import { UploadModule } from './upload/upload.module';
 @Module({
   imports: [TypeOrmModule.forRoot(), AuthModule, UserModule, AddressModule, CommentModule, CartModule, BakerytypeModule, BakeryModule, UploadModule],
-  controllers: [AppController, CartController],
+  controllers: [AppController],
   providers: [{ provide: APP_GUARD, useClass: AppGuard }, AppService, CommentService, BakerytypeService],
 })
 export class AppModule implements NestModule {

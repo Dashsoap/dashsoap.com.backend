@@ -55,7 +55,7 @@ export class UserEntity extends AppEntity {
 
     /* 一个用户一个购物车 */
     @OneToOne(type => CartEntity, cart => cart.user, {
-        cascade: true
+        cascade: true,
     })
     @JoinColumn()
     cart: CartEntity;

@@ -10,10 +10,12 @@ export class CartEntity extends AppEntity {
     @Column()
     name: string
 
-    @OneToOne(type => UserEntity, user => user.cart)
+    @OneToOne(type => UserEntity, user => user.cart, {
+        eager: true
+    })
     user: UserEntity
 
-    @ManyToMany(type => BakeryEntity, bakery => bakery.cart)
-    bakery: BakeryEntity[]
-
+    // @ManyToMany(type => BakeryEntity, BakeryEntity => BakeryEntity)
+    // @JoinTable()
+    // bakery: BakeryEntity[]
 }
