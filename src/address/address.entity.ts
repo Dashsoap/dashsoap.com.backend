@@ -10,13 +10,13 @@ export class AddressEntity extends AppEntity {
 
     @Column({
         length: 20,
-        unique: true,
     })
     addressname: string;
 
     @Column({
+        default: ''
     })
-    phone: number;
+    phone: string;
 
     @Column({
         length: 20,

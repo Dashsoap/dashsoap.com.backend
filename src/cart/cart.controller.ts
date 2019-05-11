@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, Param, Query } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, Query, Put } from '@nestjs/common';
 import { CartService } from './cart.service';
 import { async } from 'rxjs/internal/scheduler/async';
 
@@ -18,5 +18,9 @@ export class CartController {
     @Get()
     async getCart(@Query() param) {
         return await this.cartService.getBakery(param.id)
+    }
+    @Put('/dele')
+    async deleBakery(@Body() body) {
+        return await this.cartService.deleBakery(body.id)
     }
 }

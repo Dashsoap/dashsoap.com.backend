@@ -23,4 +23,15 @@ export class CartService {
             // }, relations: ['cart', 'bakery']
         })
     }
+    async deleBakery(id) {
+        const cartdetail = await CartDetailEntity.findOne(id)
+        console.log(cartdetail);
+
+        if (cartdetail) {
+            const a = await CartDetailEntity.delete(id)
+            return a
+        } else {
+            return { "code": 2 }
+        }
+    }
 }
