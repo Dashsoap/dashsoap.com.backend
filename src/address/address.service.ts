@@ -21,8 +21,41 @@ export class AddressService {
 
     }
     async getUserAddress(id) {
-        return AddressEntity.find({
-            where: { userId: id },
+        const a = await UserEntity.findOne({
+            where: {
+                id: id
+            },
+            relations: ["addresses"]
         })
+        return a.addresses
+
+    }
+    async getOneAddress(id: any) {
+        const a = await AddressEntity.findOne({
+            where: {
+                id: id
+            }
+        })
+
+        return a
+    }
+    async updateAddress(id, data) {
+
+        console.log(await AddressEntity.update({
+            id: id
+        }, data));
+
+
+    }
+    async deleAddress(id) {
+        const cartdetail = await AddressEntity.findOne(id)
+        console.log(cartdetail);
+
+        if (cartdetail) {
+            const a = await AddressEntity.delete(id)
+            return a
+        } else {
+            return { "code": 2 }
+        }
     }
 }
